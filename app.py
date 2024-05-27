@@ -19,14 +19,17 @@ def projects():
 @app.route('/contact.html', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
-        name = request.form.get('name')
-        email = request.form.get('email')
-        message = request.form.get('message')
+        name = request.form['name']
+        email = request.form['email']
+        message = request.form['message']
 
-        # Guardar los datos en un archivo CSV
+        # Ensure the CSV file exists
+        file_exists = os.path.isfile('contact_data.csv')
         with open('contact_data.csv', 'a', newline='') as csvfile:
             fieldnames = ['name', 'email', 'message']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            if not file_exists:
+                writer.writeheader()
             writer.writerow({'name': name, 'email': email, 'message': message})
 
         return redirect(url_for('contact'))
