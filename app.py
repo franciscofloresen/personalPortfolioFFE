@@ -19,9 +19,9 @@ def projects():
 @app.route('/contact.html', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
-        message = request.form['message']
+        name = request.form.get('name')
+        email = request.form.get('email')
+        message = request.form.get('message')
 
         # Guardar los datos en un archivo CSV
         with open('contact_data.csv', 'a', newline='') as csvfile:
