@@ -23,13 +23,13 @@ def contact():
         email = request.form['email']
         message = request.form['message']
 
-        # Ensure the CSV file exists
+        # Ensure the CSV file exists and has headers
         file_exists = os.path.isfile('contact_data.csv')
         with open('contact_data.csv', 'a', newline='') as csvfile:
             fieldnames = ['name', 'email', 'message']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             if not file_exists:
-                writer.writeheader()
+                writer.writeheader()  # Write header if file doesn't exist
             writer.writerow({'name': name, 'email': email, 'message': message})
 
         return redirect(url_for('contact'))
