@@ -245,6 +245,19 @@ textarea {
   }
 }
 
+/* Estilos personalizados para el navbar */
+.custom-navbar {
+  background-color: cornflowerblue; /* Cambia este color al que prefieras */
+}
+
+.custom-navbar .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.custom-navbar .navbar-nav .nav-link:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
 /* Estilos para las tarjetas */
 .card-img-top {
   width: 100%;
@@ -292,7 +305,7 @@ textarea {
 #about h4 {
   margin-top: 20px;
   font-size: 22px;
-  color: #007bff;
+  color: lightblue;
 }
 
 #about ul {
@@ -309,7 +322,7 @@ textarea {
 }
 
 #about .fa-2x {
-  color: #007bff;
+  color: lightblue;
   margin-right: 10px;
 }
 
@@ -365,7 +378,7 @@ body, html {
 }
 
 body {
-  background: url('../img/pexels-iriser-1366957.jpg') no-repeat center center fixed;
+  background: url('../img/Untitled design.jpg') no-repeat center center fixed;
   background-size: cover;
   color: white;
 }
