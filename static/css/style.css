@@ -275,13 +275,13 @@ textarea {
 
 #about h2 {
   margin-bottom: 20px;
-  color: black; /* Cambiar el color del título a negro */
+  color: white; /* Cambiar el color del título a negro */
 }
 
 #about p {
   font-size: 18px;
   line-height: 1.6;
-  color: black; /* Cambiar el color del texto a negro */
+  color: white; /* Cambiar el color del texto a negro */
 }
 
 #about img {
@@ -320,12 +320,12 @@ textarea {
 
 #contact h2 {
   margin-bottom: 30px;
-  color: black; /* Cambiar el color del título a negro */
+  color: white; /* Cambiar el color del título a negro */
 }
 
 #contact .form-group label {
   font-weight: bold;
-  color: black; /* Cambiar el color del label a negro */
+  color: white; /* Cambiar el color del label a negro */
 }
 
 #contact .social-icons a {
@@ -433,3 +433,4 @@ ul li {
 #contacto p{
   color: white;
 }
+
