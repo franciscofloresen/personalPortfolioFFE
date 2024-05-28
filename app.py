@@ -23,21 +23,12 @@ def contact():
         email = request.form['email']
         message = request.form['message']
 
-        # Debug prints
-        print(f"Received data - Name: {name}, Email: {email}, Message: {message}")
-
-        try:
-            # Guardar los datos en un archivo CSV en el directorio raíz
-            file_exists = os.path.isfile('contact_data.csv')
-            with open('contact_data.csv', 'a', newline='') as csvfile:
-                fieldnames = ['name', 'email', 'message']
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                if not file_exists:
-                    writer.writeheader()  # Escribir el encabezado si el archivo no existe
-                writer.writerow({'name': name, 'email': email, 'message': message})
-            print("Data written to CSV successfully.")
-        except Exception as e:
-            print(f"Error writing to CSV: {e}")
+        # Guardar los datos en un archivo CSV
+        with open('contact_data.csv', 'a', newline='') as csvfile:
+            fieldnames = ['name', 'email', 'message']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writerow({'name': name, 'email': email, 'message': message})
+            csvfile.flush()  # Ensure data is written to disk
 
         return redirect(url_for('contact'))
 
