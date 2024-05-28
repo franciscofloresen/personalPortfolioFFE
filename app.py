@@ -43,6 +43,15 @@ def contact():
 
     return render_template('contact.html')
 
+@app.route('/view-contacts')
+def view_contacts():
+    try:
+        with open('contact_data.csv', 'r') as csvfile:
+            content = csvfile.read()
+        return f"<pre>{content}</pre>"
+    except Exception as e:
+        return str(e)
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
