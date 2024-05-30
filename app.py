@@ -4,17 +4,21 @@ import os
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def index():
     return render_template('main.html')
+
 
 @app.route('/aboutMe.html')
 def about():
     return render_template('aboutMe.html')
 
+
 @app.route('/main.html')
 def projects():
     return render_template('main.html')
+
 
 @app.route('/contact.html', methods=['GET', 'POST'])
 def contact():
@@ -34,6 +38,7 @@ def contact():
 
     return render_template('contact.html')
 
+
 @app.route('/view-contacts')
 def view_contacts():
     try:
@@ -42,6 +47,7 @@ def view_contacts():
         return f"<pre>{content}</pre>"
     except Exception as e:
         return str(e)
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
