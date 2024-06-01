@@ -15,17 +15,17 @@ def about():
     return render_template('aboutMe.html')
 
 
-@app.route('/projects')
+@app.route('/main.html')
 def projects():
     return render_template('main.html')
 
 
-@app.route('/projects/snakeinC')
-def snakeinC():
+@app.route('/snakeDesc.html')
+def snakeInC():
     return render_template('snakeDesc.html')
 
 
-@app.route('/projects/minimalWebPage')
+@app.route('/webPageDesc.html')
 def webPage():
     return render_template('webPageDesc.html')
 
