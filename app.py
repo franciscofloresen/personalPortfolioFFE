@@ -15,9 +15,19 @@ def about():
     return render_template('aboutMe.html')
 
 
-@app.route('/main.html')
+@app.route('/projects')
 def projects():
     return render_template('main.html')
+
+
+@app.route('/projects/snakeinC')
+def snakeinC():
+    return render_template('snakeDesc.html')
+
+
+@app.route('/projects/minimalWebPage')
+def webPage():
+    return render_template('webPageDesc.html')
 
 
 @app.route('/contact.html', methods=['GET', 'POST'])

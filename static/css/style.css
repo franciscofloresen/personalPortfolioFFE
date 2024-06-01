@@ -447,3 +447,11 @@ ul li {
   color: white;
 }
 
+#project-detail ul, #project-detail p{
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+#project-detail ul{
+  color: white;
+}
