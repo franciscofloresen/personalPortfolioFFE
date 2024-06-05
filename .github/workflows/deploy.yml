@@ -23,15 +23,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Login to Heroku
+    - name: Add and configure Heroku remote
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: echo $HEROKU_API_KEY | heroku auth:token
+      run: |
+        git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
 
     - name: Deploy to Heroku
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         HEROKU_APP_NAME: personalportfolioffe
-      run: |
-        heroku git:remote -a $HEROKU_APP_NAME
-        git push heroku master
+      run: git push heroku master
