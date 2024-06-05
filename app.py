@@ -4,31 +4,25 @@ import os
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def index():
     return render_template('main.html')
-
 
 @app.route('/aboutMe.html')
 def about():
     return render_template('aboutMe.html')
 
-
 @app.route('/main.html')
 def projects():
     return render_template('main.html')
-
 
 @app.route('/snakeDesc.html')
 def snakeInC():
     return render_template('snakeDesc.html')
 
-
 @app.route('/webPageDesc.html')
 def webPage():
     return render_template('webPageDesc.html')
-
 
 @app.route('/contact.html', methods=['GET', 'POST'])
 def contact():
@@ -48,7 +42,6 @@ def contact():
 
     return render_template('contact.html')
 
-
 @app.route('/view-contacts')
 def view_contacts():
     try:
@@ -58,6 +51,14 @@ def view_contacts():
     except Exception as e:
         return str(e)
 
+# Custom error handlers
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html'), 500
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
