@@ -16,24 +16,17 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.10'
+        python-version: '3.12'
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Login to Heroku Container Registry
+    - name: Deploy to Heroku
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
-      run: echo ${{ secrets.HEROKU_API_KEY }} | docker login --username ${{ secrets.HEROKU_EMAIL }} --password-stdin registry.heroku.com
-
-    - name: Build, Push and Release to Heroku
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        HEROKU_APP_NAME: personalportfolioffe
       run: |
-        heroku container:login
-        docker build -t registry.heroku.com/personalportfolioffe/web -f Dockerfile .
-        docker push registry.heroku.com/personalportfolioffe/web
-        heroku container:release web --app personalportfolioffe
+        git remote add heroku https://git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
+        git push heroku master
