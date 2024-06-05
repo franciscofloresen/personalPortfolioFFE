@@ -34,6 +34,6 @@ jobs:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: |
         heroku container:login
-        docker build -t registry.heroku.com/personalportfolioffe/web .
+        docker build -t registry.heroku.com/personalportfolioffe/web -f Dockerfile .
         docker push registry.heroku.com/personalportfolioffe/web
         heroku container:release web --app personalportfolioffe
